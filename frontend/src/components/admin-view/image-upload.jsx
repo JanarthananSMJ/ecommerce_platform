@@ -86,15 +86,23 @@ function ProductImageUpload({
           disabled={isEditMode}
         />
         {!imageFile ? (
-          <Label
-            htmlFor="image-upload"
+          <div
             className={`${
               isEditMode ? "cursor-not-allowed" : ""
-            } flex flex-col items-center justify-center h-32 cursor-pointer`}
+            } flex flex-col items-center justify-center h-32`}
           >
             <UploadCloudIcon className="w-10 h-10 text-muted-foreground mb-2" />
-            <span>Drag & drop or click to upload image</span>
-          </Label>
+            <span>Drag & drop image here</span>
+            <Button
+              type="button"
+              variant="outline"
+              className="mt-2"
+              disabled={isEditMode}
+              onClick={() => inputRef.current?.click()}
+            >
+              Upload Image
+            </Button>
+          </div>
         ) : imageLoadingState ? (
           <Skeleton className="h-10 bg-gray-100" />
         ) : (

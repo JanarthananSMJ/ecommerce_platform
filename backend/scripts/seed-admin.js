@@ -1,13 +1,14 @@
+require("dotenv").config({ path: require("path").join(__dirname, "../.env") });
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
 const ADMIN_USERNAME = "admin";
-const ADMIN_EMAIL = "admin@1.com";
-const ADMIN_PASSWORD = "123456";
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 async function seedAdmin() {
-  await mongoose.connect("mongodb://localhost:27017/ecommerce");
+  await mongoose.connect(process.env.MONGODB_URI);
 
   const existingUser = await User.findOne({ email: ADMIN_EMAIL });
 
