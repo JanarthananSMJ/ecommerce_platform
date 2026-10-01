@@ -17,13 +17,17 @@ const shopReviewRouter = require("./routes/shop/review-routes");
 
 const commonFeatureRouter = require("./routes/common/feature-routes");
 const commonCarouselRouter = require("./routes/common/carousel-routes");
+const seedAdmin = require("./helpers/seedAdmin");
 
 //create a database connection -> u can also
 //create a separate file for this and then import/use that file here
 
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => console.log("MongoDB connected"))
+  .then(async () => {
+    console.log("MongoDB connected");
+    await seedAdmin();
+  })
   .catch((error) => console.log(error));
 
 const app = express();

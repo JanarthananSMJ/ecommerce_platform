@@ -51,6 +51,13 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // ── Brand palette direct tokens ──────────────────────────────
+        ash:      "#e6e9eb",   // lightest — page backgrounds
+        silver:   "#c7c3c7",   // borders, dividers
+        mauve:    "#a69394",   // muted text, placeholders
+        ember:    "#d2452c",   // primary accent
+        bark:     "#675c5c",   // body text, icons
+        espresso: "#221d1c",   // headings, dark surfaces
       },
       borderRadius: {
         lg: "var(--radius)",

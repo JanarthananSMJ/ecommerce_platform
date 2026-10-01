@@ -34,7 +34,7 @@ function MenuItems({ setOpen }) {
   const location = useLocation();
 
   return (
-    <nav className="mt-8 flex-col flex gap-2">
+    <nav className="mt-8 flex-col flex gap-1">
       {adminSidebarMenuItems.map((menuItem) => {
         const isActive = location.pathname === menuItem.path;
 
@@ -45,14 +45,14 @@ function MenuItems({ setOpen }) {
               navigate(menuItem.path);
               setOpen ? setOpen(false) : null;
             }}
-            className={`flex cursor-pointer text-xl items-center gap-2 rounded-md px-3 py-2 transition-colors ${
+            className={`flex cursor-pointer text-base items-center gap-3 rounded-lg px-4 py-3 transition-all duration-150 ${
               isActive
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                ? "bg-ember text-white shadow-sm"
+                : "text-mauve hover:bg-bark/20 hover:text-ash"
             }`}
           >
-            {menuItem.icon}
-            <span>{menuItem.label}</span>
+            <span className="w-5 h-5">{menuItem.icon}</span>
+            <span className="font-medium">{menuItem.label}</span>
           </div>
         );
       })}
@@ -65,27 +65,31 @@ function AdminSideBar({ open, setOpen }) {
 
   return (
     <Fragment>
+      {/* Mobile sheet */}
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side="left" className="w-64">
-          <div className="flex flex-col h-full">
-            <SheetHeader className="border-b">
-              <SheetTitle className="flex gap-2 mt-5 mb-5">
-                <ChartNoAxesCombined size={30} className="text-primary" />
-                <h1 className="text-2xl font-extrabold">Admin Panel</h1>
+        <SheetContent side="left" className="w-64 bg-espresso border-bark/30 p-0">
+          <div className="flex flex-col h-full p-6">
+            <SheetHeader className="border-b border-bark/30 pb-5">
+              <SheetTitle className="flex gap-2 items-center">
+                <ChartNoAxesCombined size={28} className="text-ember" />
+                <h1 className="text-xl font-extrabold text-ash">Admin Panel</h1>
               </SheetTitle>
             </SheetHeader>
             <MenuItems setOpen={setOpen} />
           </div>
         </SheetContent>
       </Sheet>
-      <aside className="hidden w-64 flex-col border-r bg-background p-6 lg:flex">
+
+      {/* Desktop sidebar */}
+      <aside className="hidden w-64 flex-col border-r border-silver/30 bg-espresso p-6 lg:flex">
         <div
           onClick={() => navigate("/admin/products")}
-          className="flex cursor-pointer items-center gap-2"
+          className="flex cursor-pointer items-center gap-2 mb-2"
         >
-          <ChartNoAxesCombined size={30} className="text-primary" />
-          <h1 className="text-2xl font-extrabold">Admin Panel</h1>
+          <ChartNoAxesCombined size={28} className="text-ember" />
+          <h1 className="text-xl font-extrabold text-ash">Admin Panel</h1>
         </div>
+        <div className="w-8 h-0.5 bg-ember rounded-full mb-2" />
         <MenuItems />
       </aside>
     </Fragment>

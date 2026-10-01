@@ -46,12 +46,12 @@ const brandsWithIcon = [
 ];
 
 const iconBadgeColors = [
-  "bg-primary/15 text-primary",
-  "bg-secondary/15 text-secondary",
-  "bg-accent/20 text-accent-foreground",
-  "bg-amber-500/15 text-amber-600",
-  "bg-sky-500/15 text-sky-600",
-  "bg-emerald-500/15 text-emerald-600",
+  "bg-ember/15 text-ember",
+  "bg-bark/15 text-bark",
+  "bg-espresso/15 text-espresso",
+  "bg-mauve/25 text-bark",
+  "bg-ember/10 text-ember",
+  "bg-bark/20 text-espresso",
 ];
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -155,7 +155,7 @@ function ShoppingHome() {
                   carouselImageList.length
               )
             }
-            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-background/90 hover:bg-background"
+            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-espresso/70 hover:bg-espresso border-0 text-ash"
           >
             <ChevronLeftIcon className="w-4 h-4" />
           </Button>
@@ -167,17 +167,17 @@ function ShoppingHome() {
                 (prevSlide) => (prevSlide + 1) % carouselImageList.length
               )
             }
-            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-background/90 hover:bg-background"
+            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-espresso/70 hover:bg-espresso border-0 text-ash"
           >
             <ChevronRightIcon className="w-4 h-4" />
           </Button>
         </div>
       </div>
-      <section className="py-12 bg-muted/40">
+      <section className="py-12 bg-silver/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold">Shop by category</h2>
-            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-primary" />
+            <h2 className="text-3xl font-bold text-espresso">Shop by category</h2>
+            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-ember" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {categoriesWithIcon.map((categoryItem, index) => (
@@ -204,11 +204,11 @@ function ShoppingHome() {
         </div>
       </section>
 
-      <section className="py-12">
+      <section className="py-12 bg-ash">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold">Shop by Brand</h2>
-            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-primary" />
+            <h2 className="text-3xl font-bold text-espresso">Shop by Brand</h2>
+            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-ember" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {brandsWithIcon.map((brandItem, index) => (
@@ -233,11 +233,11 @@ function ShoppingHome() {
         </div>
       </section>
 
-      <section className="py-12 bg-muted/40">
+      <section className="py-12 bg-silver/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold">Feature Products</h2>
-            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-primary" />
+            <h2 className="text-3xl font-bold text-espresso">Feature Products</h2>
+            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-ember" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {productList && productList.length > 0

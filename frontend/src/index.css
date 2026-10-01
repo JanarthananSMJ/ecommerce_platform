@@ -2,60 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Palette mapping:
+  --ash       : #e6e9eb  (lightest — page backgrounds, surfaces)
+  --silver    : #c7c3c7  (borders, dividers, muted backgrounds)
+  --mauve     : #a69394  (muted text, placeholders, secondary info)
+  --ember     : #d2452c  (primary accent — buttons, badges, links)
+  --bark      : #675c5c  (body text, icons)
+  --espresso  : #221d1c  (headings, dark surfaces, sidebar)
+*/
+
 @layer base {
   :root {
-    --background: 30 45% 97%;
-    --foreground: 20 30% 15%;
-    --card: 30 40% 99%;
-    --card-foreground: 20 30% 15%;
-    --popover: 30 40% 99%;
-    --popover-foreground: 20 30% 15%;
-    --primary: 16 68% 50%;
-    --primary-foreground: 30 45% 98%;
-    --secondary: 84 22% 32%;
-    --secondary-foreground: 30 45% 98%;
-    --muted: 30 25% 92%;
-    --muted-foreground: 25 15% 40%;
-    --accent: 355 65% 65%;
-    --accent-foreground: 20 30% 15%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 30 45% 98%;
-    --border: 30 20% 87%;
-    --input: 30 20% 87%;
-    --ring: 16 68% 50%;
+    /* Page / surface */
+    --background:        0 0% 91%;        /* #e6e9eb  ash   */
+    --foreground:        5 8% 25%;        /* #675c5c  bark  */
+
+    /* Cards & popovers — slightly lighter than page bg */
+    --card:              0 0% 97%;
+    --card-foreground:   5 8% 25%;
+    --popover:           0 0% 97%;
+    --popover-foreground: 5 8% 25%;
+
+    /* Primary — ember red */
+    --primary:           11 66% 50%;     /* #d2452c */
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary — espresso dark */
+    --secondary:         5 10% 12%;      /* #221d1c */
+    --secondary-foreground: 0 0% 95%;
+
+    /* Muted — silver grey */
+    --muted:             300 3% 78%;     /* #c7c3c7 */
+    --muted-foreground:  350 9% 62%;     /* #a69394 */
+
+    /* Accent — soft mauve */
+    --accent:            350 9% 62%;     /* #a69394 */
+    --accent-foreground: 5 10% 12%;
+
+    /* Destructive */
+    --destructive:       0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders & inputs */
+    --border:            300 3% 78%;     /* #c7c3c7 */
+    --input:             300 3% 78%;
+    --ring:              11 66% 50%;     /* ember */
+
     --radius: 0.75rem;
-    --chart-1: 16 68% 50%;
-    --chart-2: 84 22% 32%;
-    --chart-3: 355 65% 65%;
-    --chart-4: 38 80% 55%;
-    --chart-5: 205 45% 40%;
   }
 
+  /* Dark mode — espresso-based inversion */
   .dark {
-    --background: 20 30% 8%;
-    --foreground: 30 30% 95%;
-    --card: 20 25% 11%;
-    --card-foreground: 30 30% 95%;
-    --popover: 20 25% 11%;
-    --popover-foreground: 30 30% 95%;
-    --primary: 16 68% 55%;
-    --primary-foreground: 20 30% 10%;
-    --secondary: 84 22% 32%;
-    --secondary-foreground: 30 30% 95%;
-    --muted: 20 20% 18%;
-    --muted-foreground: 30 15% 65%;
-    --accent: 355 60% 60%;
-    --accent-foreground: 30 30% 95%;
-    --destructive: 0 62% 40%;
-    --destructive-foreground: 30 30% 95%;
-    --border: 20 20% 20%;
-    --input: 20 20% 20%;
-    --ring: 16 68% 55%;
-    --chart-1: 16 68% 55%;
-    --chart-2: 84 30% 45%;
-    --chart-3: 355 60% 60%;
-    --chart-4: 38 75% 60%;
-    --chart-5: 205 50% 55%;
+    --background:        5 10% 12%;      /* #221d1c */
+    --foreground:        0 0% 91%;       /* #e6e9eb */
+
+    --card:              5 9% 16%;
+    --card-foreground:   0 0% 91%;
+    --popover:           5 9% 16%;
+    --popover-foreground: 0 0% 91%;
+
+    --primary:           11 66% 55%;
+    --primary-foreground: 5 10% 10%;
+
+    --secondary:         5 8% 25%;       /* #675c5c */
+    --secondary-foreground: 0 0% 91%;
+
+    --muted:             5 8% 25%;
+    --muted-foreground:  350 9% 62%;
+
+    --accent:            5 8% 30%;
+    --accent-foreground: 0 0% 91%;
+
+    --destructive:       0 62% 40%;
+    --destructive-foreground: 0 0% 91%;
+
+    --border:            5 8% 22%;
+    --input:             5 8% 22%;
+    --ring:              11 66% 55%;
   }
 }
 
@@ -64,6 +88,22 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Smooth scrollbars using palette */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #e6e9eb;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #a69394;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #675c5c;
   }
 }
